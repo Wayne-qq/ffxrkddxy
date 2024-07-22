@@ -177,7 +177,7 @@ body, html {
 .menu.show {  
     right: 0;    
     left: 0;    
-    bottom: 20px;    
+    bottom: 10px;    
     position: fixed;
     display: block;
   }
@@ -511,7 +511,7 @@ font-weight: 600;
 line-height: normal;
 letter-spacing: 6.48px;
 text-transform: uppercase;
-    margin-top: 370px;
+    margin-top: 450px;
 }
 
 
@@ -520,10 +520,10 @@ text-transform: uppercase;
 .cssload-bell {
 	width: 107px;
 	height: 109px;
-    margin-top: 180px;
+    margin-top: 250px;
 	border-radius: 100%;
 	position: absolute;
-	left: calc(50% - 44px);
+	left: calc(50% - 52px);
 }
 
 .cssload-circle {
