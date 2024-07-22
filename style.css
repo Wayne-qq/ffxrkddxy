@@ -26,9 +26,52 @@ body, html {
 }
 
 
+.header {
+    height: 70px;
+    width: 100%;
+    background: black;
+    display: none;
+}
+
+.footer {
+    height: 40px;
+    width: 100%;
+    background: black;
+    position: fixed;
+    bottom: 0;
+    display: none;
+}
+
+
+
+.main__preloader {
+    background-color: #000;
+    height: 100vh;
+    display: block;
+}
+
+.main__preloader.delete {
+    display: none;
+}
+
 .main__home {
     display: none;
 }
+
+.main__home.show{
+    display: block;
+}
+
+
+.main__home, .main__boost, .main__task, .main__friend {
+    display: none;
+}
+
+.main__home.show, .main__boost.show, .main__task.show, .main__friend.show {
+    display: block;
+}
+
+
 
 .name {
     color: #DADADA;
@@ -126,40 +169,104 @@ body, html {
     line-height: normal;
 }
 
-
-
-.nav {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    position: fixed;
-    bottom: 50px;
-    left: 50%;
-    right: 50%;
-
-}
-
 .menu {
-    display: flex;
-    width: 244px;
-    justify-content: space-between;
-}
-
-.menu button {
-    background: none;
-    border: none;
+    display: none;
 }
 
 
-
-
-
-
-
-
-.main__boost {
-display: block;
+.menu.show {  
+    right: 0;    
+    left: 0;    
+    bottom: 20px;    
+    position: fixed;
+    display: block;
+  }
+  
+.menu__list {	
+  display: flex;	
+  justify-content: center;	
+  align-items: end;	
+  padding-left: 0;
 }
+
+
+.menu__list li + li {	
+  margin-left: 20px;
+}
+
+.menu__list-svg {	
+  padding: 11px 15px;	
+  display: block;	
+  max-width: 60px;	
+  height: 33px;    
+  border-radius: 63px;    
+}
+
+.menu__list-link {	
+  color: #8c8c8c;	
+  text-align: center;	
+  font-family: Inter;	
+  font-size: 10px;	
+  font-style: normal;	
+  font-weight: 600;	
+  line-height: normal;	
+  z-index: 10;
+}
+
+.menu__list-text {
+  display: block;	
+  color: #8c8c8c;	
+  text-align: center;	
+  font-family: Inter;	
+  font-size: 10px;	
+  font-style: normal;	
+  font-weight: 600;	
+  line-height: normal;	
+  text-align: center;
+}
+
+.menu__list-item:last-child {
+  position: relative;
+}
+
+.menu__list-item:last-child::after {
+  content: '';	
+  position: absolute;
+  width: 10px;	
+  height: 10px;	
+  background: #FF9E2D;	
+  border-radius: 50%;	
+  top: 0;	
+  left: 52px;
+}
+
+
+
+
+.svg__mining {    
+    margin-top: 3px;
+}
+.nav__link {    
+    fill: #D4D4D4;
+}
+
+.nav__link.active {    
+    fill: #FF9E2D;
+}
+
+
+
+
+
+.nav__link {    
+  background: none;
+  border: none;
+}
+
+
+
+
+
 
 
 
@@ -212,28 +319,45 @@ display: block;
     height: 290px;
 }
 
-.header {
-    height: 70px;
-    width: 100%;
-    background: black;
-    display: none;
-}
 
-.footer {
-    height: 40px;
-    width: 100%;
-    background: black;
-    position: fixed;
-    bottom: 0;
-    display: none;
+
+
+
+.kdks {
+    margin-bottom: 30px;
 }
 
 
 
 
-.main__friend {
-    display: none;
+.containerr {
+    position: relative;
+    width: 138px; /* Ширина SVG */
+    height: 20px; /* Висота SVG */
+    margin: auto;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
 }
+
+.preloader__svg {
+    width: 138px;
+    height: 134px;
+    animation: rotate 1s linear infinite;
+    transform-origin: center center;
+    transform-box: fill-box;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 
 
 
@@ -332,9 +456,8 @@ display: block;
 
 .friend__elipse {
     border-radius: 65px;
-    border: 1px solid #FF7401;
+    border: 1.5px solid #FF7401;
     background: rgba(0, 0, 0, 0.40);
-    box-shadow: 0px 0px 32px 0px rgba(255, 116, 1, 0.50);
     backdrop-filter: blur(10.5px);
     padding: 25px 27px;
     margin-top: 19px;
@@ -348,4 +471,173 @@ display: block;
     font-weight: 600;
     line-height: normal;
     text-transform: uppercase;
+}
+
+.friend__btn-first {
+    margin-top: 43px;
+}
+
+
+.friend__fox img {
+    margin-top: -20px;
+    width: 320px;
+    height: 320px;
+}
+.friend__fox p {
+    color: #919191;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: -127px;
+    margin-left: 160px;
+}
+
+
+
+
+
+
+
+.main__preloader p {
+    color: #d0d0d0;
+text-align: center;
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: 6.48px;
+text-transform: uppercase;
+    margin-top: 370px;
+}
+
+
+
+
+.cssload-bell {
+	width: 107px;
+	height: 109px;
+    margin-top: 180px;
+	border-radius: 100%;
+	position: absolute;
+	left: calc(50% - 44px);
+}
+
+.cssload-circle {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.cssload-circle .cssload-inner {
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	border: 4px solid rgba(255, 128, 0, 0.7);
+	border-right: none;
+	border-top: none;
+	background-clip: padding;
+	box-shadow: inset 0px 0px 9px rgba(255, 115, 0, 0.15);
+}
+
+.cssload-circle:nth-of-type(0) {
+	transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+}
+.cssload-circle:nth-of-type(0) .cssload-inner {
+	animation: cssload-spin 1.7s infinite linear;
+		-o-animation: cssload-spin 1.7s infinite linear;
+		-ms-animation: cssload-spin 1.7s infinite linear;
+		-webkit-animation: cssload-spin 1.7s infinite linear;
+		-moz-animation: cssload-spin 1.7s infinite linear;
+}
+
+.cssload-circle:nth-of-type(1) {
+	transform: rotate(70deg);
+		-o-transform: rotate(70deg);
+		-ms-transform: rotate(70deg);
+		-webkit-transform: rotate(70deg);
+		-moz-transform: rotate(70deg);
+}
+.cssload-circle:nth-of-type(1) .cssload-inner {
+	animation: cssload-spin 1.7s infinite linear;
+		-o-animation: cssload-spin 1.7s infinite linear;
+		-ms-animation: cssload-spin 1.7s infinite linear;
+		-webkit-animation: cssload-spin 1.7s infinite linear;
+		-moz-animation: cssload-spin 1.7s infinite linear;
+}
+
+.cssload-circle:nth-of-type(2) {
+	transform: rotate(140deg);
+		-o-transform: rotate(140deg);
+		-ms-transform: rotate(140deg);
+		-webkit-transform: rotate(140deg);
+		-moz-transform: rotate(140deg);
+}
+.cssload-circle:nth-of-type(2) .cssload-inner {
+	animation: cssload-spin 1.7s infinite linear;
+		-o-animation: cssload-spin 1.7s infinite linear;
+		-ms-animation: cssload-spin 1.7s infinite linear;
+		-webkit-animation: cssload-spin 1.7s infinite linear;
+		-moz-animation: cssload-spin 1.7s infinite linear;
+}
+
+.cssload-bell {
+	animation: cssload-spin 4.25s infinite linear;
+		-o-animation: cssload-spin 4.25s infinite linear;
+		-ms-animation: cssload-spin 4.25s infinite linear;
+		-webkit-animation: cssload-spin 4.25s infinite linear;
+		-moz-animation: cssload-spin 4.25s infinite linear;
+}
+
+
+
+@keyframes cssload-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@-o-keyframes cssload-spin {
+	from {
+		-o-transform: rotate(0deg);
+	}
+	to {
+		-o-transform: rotate(360deg);
+	}
+}
+
+@-ms-keyframes cssload-spin {
+	from {
+		-ms-transform: rotate(0deg);
+	}
+	to {
+		-ms-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes cssload-spin {
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-moz-keyframes cssload-spin {
+	from {
+		-moz-transform: rotate(0deg);
+	}
+	to {
+		-moz-transform: rotate(360deg);
+	}
 }
