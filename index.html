@@ -4,50 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
+    <script src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <button id="connect-wallet">Підключити гаманець</button>
-    <p class="wallet__num">Гаманець: <span id="wallet-address">немає</span></p>
-    
+    <div class="con" id="ton-connect"></div>
 
-    <style>
-      #connect-wallet {
-        background-color: black;
-        color: white;
-        border: 2px solid white;
-        border-radius: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-      }
-    
-      #connect-wallet:hover {
-        background-color: #333;
-      }
-    </style>
+
+
     
     <script>
-      // Підключаємо Telegram WebApp API
-const tg = window.Telegram.WebApp;
+// Ініціалізація TON Connect UI
+const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: 'https://your-app-url.com/tonconnect-manifest.json',
+    buttonRootId: 'ton-connect'
+});
 
-document.getElementById('connect-wallet').onclick = function() {
-  // Показуємо попап для відкриття гаманця
-  if (confirm('Відкрити Telegram Wallet для підключення гаманця?')) {
-    // Відкриваємо Telegram Wallet у вікні WebApp
-    tg.openTelegramWallet({
-      connect: true, // Підключення гаманця
-      success: function(walletInfo) {
-        // Після успішного підключення
-        const walletAddress = walletInfo.address; // Отримуємо адресу гаманця
-        document.getElementById('wallet-address').innerText = walletAddress; // Виводимо адресу на сторінці
-      },
-      error: function(err) {
-        console.error('Помилка підключення гаманця:', err);
-      }
-    });
-  }
+// Функція для підключення гаманця
+async function connectToWallet() {
+    try {
+        const connectedWallet = await tonConnectUI.connectWallet();
+        console.log('Connected Wallet:', connectedWallet);
+        document.getElementById('wallet-address').innerText = connectedWallet.address;
+    } catch (error) {
+        console.error('Error connecting to wallet:', error);
+    }
+}
+
+// Додаємо обробник для кнопки
+document.getElementById('ton-connect').onclick = connectToWallet;
+
+// Опції UI
+tonConnectUI.uiOptions = {
+    twaReturnUrl: 'https://t.me/testtfoxybot/FoxyFarm'
 };
 
     </script>
