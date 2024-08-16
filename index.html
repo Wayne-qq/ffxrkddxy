@@ -8,14 +8,49 @@
     <title>Document</title>
 </head>
 <body>
+    <button id="connect-wallet">Підключити гаманець</button>
+    <p class="wallet__num">Гаманець: <span id="wallet-address">немає</span></p>
+    
 
-   <div class="container">
-    <a class="wallet_one" href="https://t.me/wallet?start">Підключити гаманець</a>
+    <style>
+      #connect-wallet {
+        background-color: black;
+        color: white;
+        border: 2px solid white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    
+      #connect-wallet:hover {
+        background-color: #333;
+      }
+    </style>
+    
+    <script>
+      // Підключаємо Telegram WebApp API
+const tg = window.Telegram.WebApp;
 
-    <button class="wallet_two" id="connect-wallet">Підключити Telegram гаманець</button>
-   </div>
+document.getElementById('connect-wallet').onclick = function() {
+  // Показуємо попап для відкриття гаманця
+  if (confirm('Відкрити Telegram Wallet для підключення гаманця?')) {
+    // Відкриваємо Telegram Wallet у вікні WebApp
+    tg.openTelegramWallet({
+      connect: true, // Підключення гаманця
+      success: function(walletInfo) {
+        // Після успішного підключення
+        const walletAddress = walletInfo.address; // Отримуємо адресу гаманця
+        document.getElementById('wallet-address').innerText = walletAddress; // Виводимо адресу на сторінці
+      },
+      error: function(err) {
+        console.error('Помилка підключення гаманця:', err);
+      }
+    });
+  }
+};
 
-
-    <script src="./main.js"></script>
+    </script>
+    
 </body>
 </html>
